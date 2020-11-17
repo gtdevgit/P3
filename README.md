@@ -8,7 +8,7 @@ Les sources de l'application sont dans le répertoire __/Android/Entrevoisins__.
 
 Le projet est développé en __java__ avec __Android Studio__.
 
-Pour télécharger __Android studio__ : <https://developer.android.com/studio>
+Pour télécharger __Android Studio__ : <https://developer.android.com/studio>
 
 ## Structure générale du projet
 ...
