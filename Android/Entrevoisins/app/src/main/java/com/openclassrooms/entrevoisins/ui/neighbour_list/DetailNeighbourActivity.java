@@ -44,21 +44,17 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     @BindView(R.id.floatingActionButtonFavorite)
     FloatingActionButton buttonFavorite;
 
-    private NeighbourApiService mApiService;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("DEBUG","DetailNeighbourActivity.onCreate");
         setContentView(R.layout.activity_detail_neighbour);
         ButterKnife.bind(this);
 
-        mApiService = DI.getNeighbourApiService();
-
         Intent intent = getIntent();
-        Long id = intent.getLongExtra(DetailNeighbourActivity.EXTRA_ID, 0);
-        Log.i("DEBUG", "Id = " + Long.toString(id));
-        this.neighbour = mApiService.findNeighbourById(id);
+        long id = intent.getLongExtra(DetailNeighbourActivity.EXTRA_ID, 0);
+        Log.d("mydebug", "DetailNeighbourActivity.onCreate() Id = " + id);
+
+        this.neighbour = DI.getNeighbourApiService().findNeighbourById(id);
         if (neighbour != null)
         {
             //this.avatar = neighbour.getAvatarUrl();
@@ -72,7 +68,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
             Glide.with(avatar.getContext())
                     .load(neighbour.getAvatarUrl())
                     .into(avatar);
-            Log.i("DEBUG", "Favorite = " + Boolean.toString(neighbour.isFavorite()));
+            Log.i("mydebug", "DetailNeighbourActivity.onCreate() isFavorite = " + neighbour.isFavorite());
             refreshFavoriteColor();
         }
     }
@@ -94,11 +90,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     }
 
     public static void navigate(Context context, Neighbour neighbour) {
-        Log.i("DEBUG", "DetailNeighbourActivity.navigate");
         Long id = neighbour.getId();
-        Log.i("DEBUG", "Id = " + Long.toString(id));
-        Log.i("DEBUG", "Name = " + neighbour.getName());
-
         Intent intent = new Intent(context, DetailNeighbourActivity.class);
         intent.putExtra(DetailNeighbourActivity.EXTRA_ID, id);
         ActivityCompat.startActivity(context, intent, null);

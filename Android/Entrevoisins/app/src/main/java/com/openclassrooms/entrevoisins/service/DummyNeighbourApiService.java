@@ -17,7 +17,6 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
 
-
     /**
      * {@inheritDoc}
      */
@@ -36,10 +35,6 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
             return favorite_neighbours;
         }
     }
-/**
-            Predicate<Neighbour> byFavorite = neighbours -> neighbours.isFavorite() == true;
-            return neighbours.stream().filter(byFavorite).collect(Collectors.toList());
- /*
 
     /**
      * {@inheritDoc}

@@ -42,7 +42,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     }
 
     private void openDetailNeighbour(View view, Neighbour neighbour) {
-        Log.i("DEBUG", "MyNeighbourRecyclerViewAdapter.openDetailNeighbour");
+        Log.d("mydebug", "MyNeighbourRecyclerViewAdapter.openDetailNeighbour");
         DetailNeighbourActivity.navigate(view.getContext(),  neighbour);
     }
 

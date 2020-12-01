@@ -37,6 +37,7 @@ public class NeighbourFragment extends Fragment {
      * @return @{@link NeighbourFragment}
      */
     public static NeighbourFragment newInstance(boolean onlyFavorite) {
+        Log.d("mydebug", "NeighbourFragment.newInstance(onlyFavorite = " + onlyFavorite + ")");
         Bundle args = new Bundle();
         args.putBoolean(KEY_ONLY_FAVORITES, onlyFavorite);
         NeighbourFragment fragment = new NeighbourFragment();
@@ -66,6 +67,7 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
+        Log.d("mydebug", "NeighbourFragment.initList(). onlyFavorite = " + onlyFavorite + ")");
         mNeighbours = mApiService.getNeighbours(onlyFavorite);
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
