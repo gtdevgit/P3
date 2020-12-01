@@ -1,6 +1,8 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.DetailNeighbourActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -20,6 +23,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.util.Log.*;
 
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
@@ -36,6 +41,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         return new ViewHolder(view);
     }
 
+    private void openDetailNeighbour(View view, Neighbour neighbour) {
+        Log.i("DEBUG", "MyNeighbourRecyclerViewAdapter.openDetailNeighbour");
+        DetailNeighbourActivity.navigate(view.getContext(),  neighbour);
+    }
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Neighbour neighbour = mNeighbours.get(position);
@@ -49,6 +59,22 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
+            }
+        });
+
+        holder.mNeighbourAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
+                openDetailNeighbour(view, neighbour);
+            }
+        });
+
+        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
+                openDetailNeighbour(view, neighbour);
             }
         });
     }
@@ -71,4 +97,5 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             ButterKnife.bind(this, view);
         }
     }
+
 }

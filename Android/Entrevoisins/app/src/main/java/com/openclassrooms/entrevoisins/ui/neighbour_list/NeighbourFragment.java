@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,17 +25,22 @@ import java.util.List;
 
 public class NeighbourFragment extends Fragment {
 
+    public static final String KEY_ONLY_FAVORITES = "onlyfavorites";
+
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
-
+    private boolean onlyFavorite;
 
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(boolean onlyFavorite) {
+        Bundle args = new Bundle();
+        args.putBoolean(KEY_ONLY_FAVORITES, onlyFavorite);
         NeighbourFragment fragment = new NeighbourFragment();
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -42,6 +48,7 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
+        onlyFavorite = getOnlyFavoriteFromArgs();
     }
 
     @Override
@@ -59,7 +66,7 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
+        mNeighbours = mApiService.getNeighbours(onlyFavorite);
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 
@@ -77,8 +84,8 @@ public class NeighbourFragment extends Fragment {
 
     @Override
     public void onStop() {
-        super.onStop();
         EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 
     /**
@@ -89,5 +96,13 @@ public class NeighbourFragment extends Fragment {
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
+    }
+
+    private boolean getOnlyFavoriteFromArgs(){
+        Bundle args = getArguments();
+        if (args != null) {
+            return args.getBoolean(KEY_ONLY_FAVORITES, false);
+        }
+        return false;
     }
 }
