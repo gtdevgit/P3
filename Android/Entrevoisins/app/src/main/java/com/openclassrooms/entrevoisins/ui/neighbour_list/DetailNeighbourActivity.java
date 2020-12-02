@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +49,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
+
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
@@ -94,5 +96,16 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         Intent intent = new Intent(context, DetailNeighbourActivity.class);
         intent.putExtra(DetailNeighbourActivity.EXTRA_ID, id);
         ActivityCompat.startActivity(context, intent, null);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        // put your code here...
+
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 }
