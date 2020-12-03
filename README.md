@@ -17,7 +17,17 @@ Le projet est développé en __java__ avec __Android Studio__.
 ...
 
 ## Les tests unitaires
-...
+Des tests unitaires sont disponibles dans le répertoire /src/test/  
+Ils utilisent junit4.  
+Les méthodes disponibles sont :  
+-  getAllNeighbours() : Vérifie que la liste de voisins se charge pleinement.  
+- getFavoritesNeighbours() : Vérifie que la liste initiale des favoris est vide.  
+- deleteNeighbour() : Test la suppression d’un voisin.  
+- createOneNeighbour() : Test le constructeur de la classe Neighbour.  
+- addOneNeighbour() : Test l’ajout d’un voisin dans la liste.  
+- addOneFavoriteNeighbour() : Test l’ajout d’un nouveau voisin dans les favoris.  
+- setNeighbourAsFavorite() : Test la mise en favoris d’un voisin.  
+- findNeighbourById() : Test la procédure DummyNeighbourApiService findNeighbourById(long id).  
 
 ## Les test instumentalisés
 ...
