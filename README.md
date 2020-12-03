@@ -29,5 +29,13 @@ Les méthodes disponibles sont :
 - setNeighbourAsFavorite() : Test la mise en favoris d’un voisin.  
 - findNeighbourById() : Test la procédure DummyNeighbourApiService findNeighbourById(long id).  
 
-## Les test instumentalisés
-...
+## Les tests instumentalisés
+Des tests instrumentalisés sont disponibles dans le répertoire /src/androidTest/  
+Ils utilisent junit et Espresso  
+Les méthodes disponibles sont :  
+- myNeighboursList_shouldNotBeEmpty() : Des données doivent s’afficher dans la listes des voisins.  
+- myFavoriteNeighboursList_shouldBeEmpty() : La liste des favoris doit être vide.  
+- myNeighboursList_deleteAction_shouldRemoveItem() : Test du bouton supprimer dans la liste des voisins.  
+- myNeighboursList_clickOnItem_shouldOpenDetail() : Test l’ouverture de la fenêtre de détail d’un voisin.  
+- myNeighboursList_clickOnFirstItem_shouldShowFirstName() : Test que l’ouverture de la fenêtre de détail d’un voisin affiche le bon voisin.  
+- myNeighboursList_CountFavorites() : Test l’ajout d’un voisin en favoris.  
