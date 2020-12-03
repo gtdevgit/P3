@@ -118,26 +118,25 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.detail_name)).check(matches(withText(neighbourName)));
     }
 
-    /*
+/*
     @Test
-    public void myNeighboursList_CountFavorites() {
+    public void myNeighboursList_CountFavorites1() {
         service.getNeighbours(false).get(0).setFavorite(true);
         service.getNeighbours(false).get(1).setFavorite(true);
         service.getNeighbours(false).get(2).setFavorite(true);
 
-        List<Neighbour> neighbours = service.getNeighbours(true);
-        int i = neighbours.size();
+        ListNeighbourHelper.getAllNeighbour().perform(swipeLeft());
+        SystemClock.sleep(500);
+        ListNeighbourHelper.getFavoriteNeighbour()
+                .check(withItemCount(1));
 
         // click sur les favoris
-        Matcher<View> matcher = allOf(withText(R.string.tab_favorites_title),
-                isDescendantOfA(withId(R.id.tabs)));
-        onView(matcher).perform(click());
-        SystemClock.sleep(1000); // Wait a little until the content is loaded
-
-        ListNeighbourHelper.getFavoriteNeighbour()
-                .check(withItemCount(3));
+//        Matcher<View> matcher = allOf(withText(R.string.tab_favorites_title), isDescendantOfA(withId(R.id.tabs)));
+//        onView(matcher).perform(click());
     }
-    */
+
+ */
+
     @Test
     public void myNeighboursList_CountFavorites() {
         ListNeighbourHelper.getAllNeighbour()

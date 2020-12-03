@@ -68,6 +68,7 @@ public class NeighbourServiceTest {
 
     @Test
     public void addOneFavoriteNeighbour() {
+        //service = DI.getNewInstanceApiService();
         Neighbour n = new Neighbour(99, "name", "url", "adress", "phoneNumber", "aboutMe", true);
         service.createNeighbour(n);
         List<Neighbour> neighbours = service.getNeighbours(true);
@@ -79,6 +80,8 @@ public class NeighbourServiceTest {
     public void setNeighbourAsFavorite() {
         service.getNeighbours(false).get(0).toggleFavoriteStatus();
         assertEquals(service.getNeighbours(false).get(0).isFavorite(), true);
+        // Remettre la liste dans son état initial
+        service.getNeighbours(false).get(0).setFavorite(false);
     }
 
     @Test
