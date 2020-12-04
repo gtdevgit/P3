@@ -118,36 +118,15 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.detail_name)).check(matches(withText(neighbourName)));
     }
 
-/*
-    @Test
-    public void myNeighboursList_CountFavorites1() {
-        service.getNeighbours(false).get(0).setFavorite(true);
-        service.getNeighbours(false).get(1).setFavorite(true);
-        service.getNeighbours(false).get(2).setFavorite(true);
-
-        ListNeighbourHelper.getAllNeighbour().perform(swipeLeft());
-        SystemClock.sleep(500);
-        ListNeighbourHelper.getFavoriteNeighbour()
-                .check(withItemCount(1));
-
-        // click sur les favoris
-//        Matcher<View> matcher = allOf(withText(R.string.tab_favorites_title), isDescendantOfA(withId(R.id.tabs)));
-//        onView(matcher).perform(click());
-    }
-
- */
-
     @Test
     public void myNeighboursList_CountFavorites() {
         ListNeighbourHelper.getAllNeighbour()
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         SystemClock.sleep(1000);
         onView(withId(R.id.floatingActionButtonFavorite)).perform(scrollTo(), click());
-        SystemClock.sleep(500);
         Espresso.pressBack();
         SystemClock.sleep(500);
         ListNeighbourHelper.getAllNeighbour().perform(swipeLeft());
-        SystemClock.sleep(500);
         ListNeighbourHelper.getFavoriteNeighbour()
                 .check(withItemCount(1));
     }
