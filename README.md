@@ -13,8 +13,11 @@ Le projet est développé en __java__ avec __Android Studio__.
 - Télécharger __Android Studio__ : <https://developer.android.com/studio>  
 - Dans Android Studio, sélectionnez Fichier | Ouvrez ... et pointez sur le répertoire ./Android/Entrevoisins  
 
-## Structure générale du projet
-...
+## Compilations et exécution
+- Pour compiler le projet : Menu Build->Make project (Ctrl + F9)  
+- Pour exécuter l’application : Menu Run->Run… (Alt+Maj+F10) puis sélectionner "app"  
+- Pour exécuter les tests unitaires : Menu Run->Run… (Alt+Maj+F10) puis sélectionner "NeighbourServiceTest"  
+- Pour exécuter les tests instrumentalisés : Menu Run->Run… (Alt+Maj+F10) puis sélectionner "NeighboursListTest"  
 
 ## Les tests unitaires
 Des tests unitaires sont disponibles dans le répertoire /src/test/  
