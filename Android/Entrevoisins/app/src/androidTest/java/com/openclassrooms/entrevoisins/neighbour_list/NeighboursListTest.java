@@ -122,10 +122,8 @@ public class NeighboursListTest {
     public void myNeighboursList_CountFavorites() {
         ListNeighbourHelper.getAllNeighbour()
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        SystemClock.sleep(1000);
         onView(withId(R.id.floatingActionButtonFavorite)).perform(scrollTo(), click());
         Espresso.pressBack();
-        SystemClock.sleep(500);
         ListNeighbourHelper.getAllNeighbour().perform(swipeLeft());
         ListNeighbourHelper.getFavoriteNeighbour()
                 .check(withItemCount(1));

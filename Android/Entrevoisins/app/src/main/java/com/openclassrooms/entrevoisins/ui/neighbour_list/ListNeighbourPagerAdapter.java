@@ -20,6 +20,8 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Log.d("mydebug", "ListNeighbourPagerAdapter.getItem(position = " + position + ")");
+        // position = 0 => all the neighbours
+        // position = 1 => only the favorites neighbours
         return NeighbourFragment.newInstance(position == 1);
     }
 

@@ -46,6 +46,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         DetailNeighbourActivity.navigate(view.getContext(),  neighbour);
     }
 
+    // met à jour le ViewHolder, image avatar et nom.
+    // maintient les événements
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Neighbour neighbour = mNeighbours.get(position);

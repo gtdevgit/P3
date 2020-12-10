@@ -91,6 +91,12 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         refreshFavoriteColor();
     }
 
+    /**
+     * navigate is called to open DetailNeighbourActivity.
+     * @param context
+     * @param neighbour Neighbour to show
+     * @return void
+     */
     public static void navigate(Context context, Neighbour neighbour) {
         Long id = neighbour.getId();
         Intent intent = new Intent(context, DetailNeighbourActivity.class);
